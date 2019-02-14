@@ -1,0 +1,102 @@
+<% include partials/header %>
+     
+     <div class="row">
+          <div class="col-lg-12">
+           
+<h1>DashBoard</h1>
+
+<%if (user.username == 'abcd') { %>
+  <% var x='iosd2019hack' %>
+ <% console.log(x) %>
+
+  <h1>Lets go</h1>
+  <% var g="all"+x %>
+  <% console.log(g) %>
+  
+  <p><a href="<%= g %>" class="btn btn-primary" role="button">Download</a></p>
+  <% } else{ %>  
+    <h1>enter your team details</h1>
+     
+<% var valueof=user._id %>
+<% console.log(valueof) %>
+<% console.log("first time") %>
+    <form method="post" action="/getdetails">
+      <div class="form-group">
+      <input name="idofuser"  value="<%= valueof %>" type="hidden">
+      </div>
+      <h1>Participant 1</h1>
+      <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" name="ponen" placeholder="name">
+        </div>
+        <div class="form-group">
+            <label>Year</label>
+            <input type="text" class="form-control" name="poney" placeholder="year">
+          </div>
+          <div class="form-group">
+              <label>Branch</label>
+              <input type="text" class="form-control" name="pones" placeholder="stream">
+            </div>
+
+            <h1>Participant 2</h1>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="ptwon" placeholder="name">
+              </div>
+              <div class="form-group">
+                  <label>Year</label>
+                  <input type="text" class="form-control" name="ptwoy" placeholder="year">
+                </div>
+                <div class="form-group">
+                    <label>Branch</label>
+                    <input type="text" class="form-control" name="ptwos" placeholder="stream">
+                  </div>
+
+
+                  <h1>Participant 3</h1>
+                  <div class="form-group">
+                      <label>Name</label>
+                      <input type="text" class="form-control" name="pthreen" placeholder="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="text" class="form-control" name="pthreey" placeholder="year">
+                      </div>
+                      <div class="form-group">
+                          <label>Branch</label>
+                          <input type="text" class="form-control" name="pthrees" placeholder="stream">
+                        </div>
+
+
+                        <h1>Participant 4</h1>
+      <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" name="pfourn" placeholder="name">
+        </div>
+        <div class="form-group">
+            <label>Year</label>
+            <input type="text" class="form-control" name="pfoury" placeholder="year">
+          </div>
+          <div class="form-group">
+              <label>Branch</label>
+              <input type="text" class="form-control" name="pfours" placeholder="stream">
+            </div>
+
+
+
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+
+ <% } %>
+
+
+
+          </div>
+  
+        </div>
+  
+        <% include partials/footer %>

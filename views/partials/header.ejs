@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header clearfix">
+          <nav>
+            <ul class="nav nav-pills pull-right">
+              
+                <% if(user){ %>
+              <li role="presentation"><a href="/">Dashboard</a></li>
+              <% } else{ %>
+              <li role="presentation"><a href="/users/login">Login</a></li>
+              <li role="presentation"><a href="/users/register">Sign Up</a></li>
+              <% } %>
+              <% if(user){ %>
+              <li role="presentation"><a href="/users/logout">LogOut</a></li>
+              <% } %>
+            </ul>
+          </nav>
+          <h3 class="text-muted">Login App</h3>
+        </div>
+        
+        
+       
+                            <% if(success_msg){ %>
+                              <div class="alert alert-success"><%= success_msg %></div> 
+                            <% } else if(error_msg){ %>  
+                              <div class="alert alert-warning"><%= error_msg %></div>
+                            <% } else if(error){ %> 
+                              <div class="alert alert-danger"><%= error %></div>
+                           <% } %>
