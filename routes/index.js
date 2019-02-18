@@ -1,13 +1,36 @@
 var express=require('express')
-var router=express.Router();
 
+ 
+
+var router=express.Router();
+var path = require('path');
 var mongo = require('mongodb');
 var mongoose=require ('mongoose')
-mongoose.connect("mongodb://localhost:27017/logg", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/logg2", { useNewUrlParser: true });
 var user=require('../models/user')
+
+
+/*
 router.get('/',ensureAuth,function(req,res){
     res.render('index.ejs');
 })
+*/
+
+router.get('/',function(req,res){
+    res.sendFile('index.html');
+    console.log("here")
+})
+
+
+router.get('/log-in',ensureAuth,function(req,res){
+    res.render('index.ejs');
+})
+
+router.get('/sign-in',function(req,res){
+    res.sendFile(path.join(__dirname, '../public', 'signup.html'));
+})
+
+
 
 router.post('/getdetails',function(req,res){
 	
@@ -30,6 +53,7 @@ router.post('/getdetails',function(req,res){
   var afoura=req.body.pfourn;
   var afourb=req.body.pfours;
   var afourc=req.body.pfoury;
+  var idi=req.body.idea;
 
     user.findOne({_id:i},function(err,a){
         console.log(a);
@@ -38,6 +62,7 @@ router.post('/getdetails',function(req,res){
      a.two={name:atwoa,branch:atwob,year:atwoc};
      a.three={name:athreea,branch:athreeb,year:athreec};
      a.four={name:afoura,branch:afourb,year:afourc};
+     a.idea=idi;
      a.save().then(()=>{
   console.log(a);
 
@@ -47,19 +72,10 @@ router.post('/getdetails',function(req,res){
      
     })
 
-    res.render('registered.ejs');
-  
+    res.sendFile(path.join(__dirname, '../public', 'one.html'));
 
 })
-router.get('/alliosd2019hack',function(req,res){
 
-     user.find({},function(err,a){
-         console.log(a);
-         res.render('pk.ejs',{all:a});
-     })
-
- 
-})
 function ensureAuth(req,res,next){
 if(req.isAuthenticated()){
     return next();

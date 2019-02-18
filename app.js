@@ -15,11 +15,13 @@ var bcrypt=require('bcryptjs')
 var routes=require('./routes/index');
 var users=require('./routes/users')
 var app=express()
-mongoose.connect("mongodb://localhost:27017/logg", { useNewUrlParser: true },function(){
+app.use(express.static(__dirname+"/public/"));
+
+mongoose.connect("mongodb://localhost:27017/logg2", { useNewUrlParser: true },function(){
   console.log("connect");
   var admin=new user({
-    username:"abcd",
-  password:"admin123"
+    username:"hackmsitiosd20506",
+  password:"moriartyisback"
     })
 
     bcrypt.genSalt(10, function(err, salt) {

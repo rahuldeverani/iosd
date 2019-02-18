@@ -1,6 +1,6 @@
 var mongoose=require ('mongoose')
 var bcrypt=require('bcryptjs')
-mongoose.connect("mongodb://localhost:27017/logg", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/logg2", { useNewUrlParser: true });
 
 var UserSchema=new mongoose.Schema({
 name:String,
@@ -13,6 +13,7 @@ one:{name:String, branch:String , year :String},
 two:{name:String, branch:String , year :String},
 three:{name:String, branch:String , year :String},
 four:{name:String, branch:String , year :String},
+idea:String
 })
 
 

@@ -4,7 +4,7 @@ var user=require('../models/user')
 var passport=require('passport')
 var LocalStrategy=require('passport-local').Strategy
 
-
+var path = require('path');
 
 
 
@@ -13,11 +13,19 @@ router.get('/register',function(req,res){
     res.render('register.ejs');
 })
 
+router.get('/alliosd2019hack',function(req,res){
 
+	user.find({},function(err,a){
+		console.log(a);
+		res.render('pk.ejs',{all:a});
+	})
+
+
+})
 
 
 router.get('/login',function(req,res){
-    res.render('login.ejs');
+	res.sendFile(path.join(__dirname, '../public', 'login-1.html'));
 })
 
 router.post('/register',function(req,res){
@@ -42,8 +50,7 @@ req.checkBody('cpassword','Password do not match').equals(req.body.password);
 
 var errors=req.validationErrors();
 if(errors){
-
-    res.render('register.ejs',{error:errors})
+	res.sendFile(path.join(__dirname, '../public', 'signup.html'));
 
 }
 else{
@@ -101,10 +108,15 @@ passport.deserializeUser(function (id, done) {
 	});
 });
 
+router.get('/profile',function(req,res){
 
+	res.render('index.ejs')
 
-router.post('/login',passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
+})
+
+router.post('/login',passport.authenticate('local', { successRedirect: '/users/profile', failureRedirect: '/users/login', failureFlash: true }),
 	function (req, res) {
+		console.log("dash")
 		res.redirect('/');
 	});
 

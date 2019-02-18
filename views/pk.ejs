@@ -1,9 +1,49 @@
-<h1>All values</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <title>Document</title>
 
+</head>
+<body>
+   
+<h1 style="text-align: center">Admin page</h1>
+<h3 style="text-align: center">List of all teams</h3>
 
-<% console.log(all) %>
 <% all.forEach(function(team){ %>
+    
+    
+
+            <% if(team.name!=null){ %>
+                <div class="card-deck col-lg-8" style="width: 50%; align:text-center ; margin: auto" >
+                        <div class="card bg-success">
+                          <div class="card-body text-center">
+                                <p><h4>team name -> <%= team.name %></h4>
+                                    <h4><%= team.email %></h4>
+                                <h6>participants</h2>
+                                <h6><%= team.one.name %>,<%= team.one.year %>,<%= team.one.branch %> </h6>
+                                <h6><%= team.two.name %>,<%= team.one.year %>,<%= team.one.branch %> </h6>
+                                <h6><%= team.three.name %>,<%= team.three.year %>,<%= team.three.branch %> </h6>
+                                <h6><%= team.four.name %>,<%= team.four.year %>,<%= team.four.branch %> </h6>
+                                <h6><%= team.idea %></h6></p>
+                              </div>
+                            </div>
+                            
+                            
+                          </div>
+            <% } %>
+         
+
+                      
+                  
+                
 
 
-<h1><%= team.name %></h1>
+
 <% }) %>
+
+
+</body>
