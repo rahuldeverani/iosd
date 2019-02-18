@@ -10,6 +10,19 @@ mongoose.connect("mongodb://localhost:27017/logg2", { useNewUrlParser: true });
 var user=require('../models/user')
 
 
+
+
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: '', ///enter your mail
+    pass: '' //enter password
+  }
+});
+
+
 /*
 router.get('/',ensureAuth,function(req,res){
     res.render('index.ejs');
@@ -65,6 +78,34 @@ router.post('/getdetails',function(req,res){
      a.idea=idi;
      a.save().then(()=>{
   console.log(a);
+
+  var mailOptions = {
+    from: '', //email
+    to: '',
+    subject: 'Participant details',
+    text: `participant one ${a.one.name}  ${a.one.branch} ${a.one.year}
+           participant two ${a.two.name}  ${a.two.branch} ${a.two.year}
+           participant two ${a.three.name}  ${a.three.branch} ${a.three.year}
+           participant two ${a.four.name}  ${a.four.branch} ${a.four.year}
+    
+    `
+    // html: '<h1>Hi Smartherd</h1><p>Your Messsage</p>'        
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
+
+
+
+
+
+
 
      })
        
